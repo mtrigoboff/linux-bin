@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# display differences between 2 directories
+
+diff -rq $1 $2

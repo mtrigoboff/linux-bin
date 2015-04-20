@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# list all files recursively in directory $1 to file $2
+
+find $1 -type f -print > $2

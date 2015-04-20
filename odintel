@@ -1,0 +1,3 @@
+#! /bin/bash
+
+objdump -S -M intel $1.o

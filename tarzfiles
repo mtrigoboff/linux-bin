@@ -1,0 +1,9 @@
+#! /bin/bash
+
+# archive all files recursively in directory $1,
+# creating compressed tar file named $2.tar.gz
+
+tar cvpzf $2.tar.gz $1
+# c (create), v (verbose), p (preserve file permissions), z (compress)
+
+chmod 600 $2.tar.gz

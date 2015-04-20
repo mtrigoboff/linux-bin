@@ -1,0 +1,2 @@
+# definition works for make
+CFLAGS=-m32 -std=gnu11 -Wall -g

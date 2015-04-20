@@ -1,0 +1,1 @@
+nano --autoindent --tabsize=4 $1

@@ -1,0 +1,2 @@
+# definition works for bash scripts
+CFLAGS='-m32 -std=gnu11 -Wall -g'

@@ -1,0 +1,5 @@
+#! /bin/bash
+
+source gccflags
+
+do_cmd "gcc $CFLAGS $1.c -lm -o $1"

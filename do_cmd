@@ -1,0 +1,4 @@
+#! /bin/bash
+
+echo $1			# display command
+$1				# execute command

@@ -1,0 +1,3 @@
+#! /bin/bash
+
+tar --preserve-permissions --extract -f $1
