@@ -1,3 +1,5 @@
 #! /bin/bash
 
-do_cmd "g++ -m32 -std=c++11 -Wall -g $1.cpp -o $1"
+source g++flags
+
+do_cmd "g++ $CPP_FLAGS $1.cpp -o $1"
