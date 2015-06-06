@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# found this at
+# http://stackoverflow.com/questions/16956810/finding-all-files-containing-a-text-string-on-linux
+#
+# grep --include=\*.{c,h} -rnw 'directory' -e "pattern"
+
+if [ $# -eq 0 ];then
+	echo 'call with: file_pattern directory grep_pattern'
+	exit
+fi
+grep --include=$1 -rnw $2 -e $3
