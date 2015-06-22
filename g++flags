@@ -1,2 +1,3 @@
 # definition works for bash scripts
-CPP_FLAGS=-m32 -std=c++11 -Wall -g
+# (can't have spaces around = sign)
+CPP_FLAGS='-m32 -std=c++11 -Wall -g'
