@@ -15,7 +15,7 @@ if !(grep -c /home/student/$userName /etc/passwd > /dev/null 2>&1;) then
 	echo "adding account $userName: $gNumber $expirationDate $crn"
 	useradd -d /home/student/$userName -m \
 			-e $expirationDate \
-			-c "$crn-$userName" \
+			-c "$crn $userName" \
 			$userName
 	echo -e "$gNumber\n$gNumber" | passwd $userName 
 else
