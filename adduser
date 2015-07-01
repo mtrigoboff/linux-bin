@@ -1,0 +1,23 @@
+#! /bin/bash
+
+if [ $# -eq 0 ];then
+	echo 'call with: user_name g_number expirationDate crn'
+	echo '           (expirationdate is YYYY-MM-DD)'
+	exit
+fi
+
+userName=$1
+gNumber=$2
+expirationDate=$3
+crn=$4
+
+if !(grep -c /home/student/$userName /etc/passwd > /dev/null 2>&1;) then
+	echo "adding account $userName: $gNumber $expirationDate $crn"
+	useradd -d /home/student/$userName -m \
+			-e $expirationDate \
+			-c "$crn-$userName" \
+			$userName
+	echo -e "$gNumber\n$gNumber" | passwd $userName 
+else
+	echo "account $userName already exists"
+fi
