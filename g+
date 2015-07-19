@@ -2,4 +2,4 @@
 
 source g++flags
 
-do_cmd "g++ $CPP_FLAGS $1.cpp -o $1"
+do_cmd "g++ $CPPFLAGS $1.cpp -o $1"
