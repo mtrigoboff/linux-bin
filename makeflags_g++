@@ -6,3 +6,4 @@
 
 CC = g++
 CPPFLAGS = -m32 -std=c++11 -Wall -g
+LDFLAGS = -m32

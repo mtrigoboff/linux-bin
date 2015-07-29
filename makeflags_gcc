@@ -6,3 +6,4 @@
 
 CC = gcc
 CFLAGS = -m32 -std=gnu11 -Wall -g
+LDFLAGS = -m32
