@@ -4,4 +4,5 @@
 # bash scripts require a different syntax:
 # see, for instance, g++flags
 
+CC = g++
 CPPFLAGS = -m32 -std=c++11 -Wall -g
