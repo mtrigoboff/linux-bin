@@ -3,4 +3,4 @@
 # use to deal with final exam code that hangs
 
 mv final.c final.submitted.c
-cp ~/cs201/final/dummy.c final.c
+cp ~/cs201/final/dev/dummy.c final.c
