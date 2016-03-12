@@ -1,3 +1,5 @@
 #! /bin/bash
 
-do_cmd "gcc $2 -m32 -c $1.c"
+source gccflags
+
+do_cmd "gcc -c $CFLAGS $1.c"
