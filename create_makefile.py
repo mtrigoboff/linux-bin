@@ -98,7 +98,7 @@ if __name__ == '__main__':
 		sys.exit()
 	projectDirPath = sys.argv[1]
 	appTargetName = sys.argv[2]
-	print('makefiles: ', projectDirPath, appTargetName)
+	print('create_makefile: ', projectDirPath, appTargetName)
 	if os.path.isfile(projectDirPath):
 		print('not a directory')
 		sys.exit()
