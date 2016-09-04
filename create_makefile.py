@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 
-from functools import reduce
 import os, sys
+from functools	import reduce
 
 class Target:
 	def __init__(self, name, nameLgth, dependencies):
@@ -12,7 +12,8 @@ class Target:
 
 tabWidth =	4
 header = 'include ~michael.trigoboff/bin/makeflags_g++\n'
-footer = ('.PHONY: x', 'x:', '# clean the directory', 'rm -f *.o')
+footer = ('.PHONY: x', 'x:', '# clean the directory', 'rm -f *.o ')
+	# trailing space in footer[3] is necessary
 
 def createMakefile(projectDirPath):
 
@@ -32,7 +33,7 @@ def createMakefile(projectDirPath):
 			targetNameSuffix = '.o' if not fileNameBase == appTargetName else ''
 			targetName = fileNameBase + targetNameSuffix
 			targets.append(Target(targetName, len(targetName) + 1, hdrFiles))
-			# +1 for ':' delimiter after targetName in makefile
+				# +1 for ':' delimiter after targetName in makefile
 
 	# gather .o files needed for asgmt0[1234] rule, add them to dependencies for app
 	assert targets[0].name == appTargetName
@@ -51,8 +52,17 @@ def createMakefile(projectDirPath):
 		target.nTabs = nTabsMax - int(target.nameLgth / 4)
 
 	# write makefile
+
 	makefile = open(os.path.join(projectDirPath, 'makefile'), 'w')
-	print(header,										file=makefile, sep='')
+
+	# print identifying comment
+	print('# generated for', os.path.abspath(projectDirPath), \
+														file=makefile, end='\n\n')
+
+	# print include statement
+	print('# C++ compiler flags',						file=makefile)
+	print(header,										file=makefile,		   sep='')
+
 	for target in targets:
 
 		# print name followed by ':' and correct number of tabs
@@ -68,14 +78,15 @@ def createMakefile(projectDirPath):
 			print(dependent,							file=makefile, end='', sep='')
 
 		# print 2 newlines
-		print('\n' * 2									file=makefile, end='', sep='')
+		print('\n' * 2,									file=makefile, end='', sep='')
 
+	# print phony target
 	print(footer[0],									file=makefile,		   sep='')
 	print(footer[1],									file=makefile, end='', sep='')
 	print('\t' * nTabsMax,								file=makefile, end='', sep='')
 	print(footer[2],									file=makefile,		   sep='')
 	print('\t' * nTabsMax,								file=makefile, end='', sep='')
-	print(footer[3],									file=makefile, end='')
+	print(footer[3],									file=makefile, end='', sep='')
 	print(targets[0].name,								file=makefile)
 
 	makefile.close()
