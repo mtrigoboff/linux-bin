@@ -30,6 +30,8 @@ def createMakefile(projectDirPath, appTargetNameStart):
 			for line in lines:
 				if line.startswith('#include "'):
 					hdrFiles.append(line.split('"')[1])
+			# using startswith() below for e.g. cs260/asgmts where each project has
+			# its own app name that starts with 'asgmt0'
 			if fileNameBase.startswith(appTargetNameStart):
 				# primary target needs to be first in targets list
 				targets.insert(0, Target(fileNameBase, len(fileNameBase) + 1, hdrFiles))
