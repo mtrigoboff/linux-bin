@@ -5,5 +5,5 @@
 # see, for instance, g++flags
 
 CC = g++
-CPPFLAGS = -m32 -std=c++11 -Wall -g
+CPPFLAGS = -m32 -std=c++11 -Wall -Wno-write-strings -g
 LDFLAGS = -m32

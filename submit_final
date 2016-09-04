@@ -1,0 +1,3 @@
+#! /bin/bash
+
+mail -s 'Final' -a final.c michael.trigoboff@syccuxas01.pcc.edu < /dev/null

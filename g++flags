@@ -1,4 +1,4 @@
 # definition works for bash scripts
 # (can't have spaces around = sign)
 
-CPPFLAGS='-m32 -std=c++11 -Wall -g'
+CPPFLAGS='-m32 -std=c++11 -Wall -Wno-write-strings -g'
