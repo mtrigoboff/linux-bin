@@ -3,7 +3,12 @@
 # archive all files recursively in directory $1,
 # creating compressed tar file named $1.tar.gz
 
-tar cvpzf $1.tar.gz $1
-# c (create), v (verbose), p (preserve file permissions), z (compress)
+if [ $# -eq 0 ];then
+	echo 'call with directory name -> <dirname>.tar.gz'
+	exit
+fi
+
+tar cpzf $1.tar.gz $1
+# c (create), p (preserve file permissions), z (compress)
 
 chmod 600 $1.tar.gz
