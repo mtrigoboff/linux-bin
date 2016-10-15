@@ -1,0 +1,4 @@
+#! /bin/bash
+
+rm -f linux_setup.tar.gz
+tar cvzpf linux_setup.tar.gz .bash_profile .hgrc .gdbinit .vimrc
