@@ -107,5 +107,4 @@ if __name__ == '__main__':
 	if os.path.isfile(projectDirPath):
 		print(projectDirPath, 'is not a directory')
 		sys.exit()
-	print("createMakefile:", projectDirPath, appTargetNameStart)
 	createMakefile(projectDirPath, appTargetNameStart)
