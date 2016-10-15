@@ -10,7 +10,6 @@ fi
 
 rm -f $1.tar.gz			# remove previous file, if any
 
-tar cpzf $1.tar.gz $1
-# c (create), p (preserve file permissions), z (compress)
+tar --create --preserve-permissions --gzip --file $1.tar.gz $1
 
 chmod 600 $1.tar.gz

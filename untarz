@@ -1,8 +1,10 @@
 #! /bin/bash
 
+# extract contents of tar file $1
+
 if [ $# -eq 0 ];then
 	echo 'call with name of tarball (<filename>.tar.gz)'
 	exit
 fi
 
-tar --preserve-permissions --extract -f $1
+tar --preserve-permissions --extract --file $1
