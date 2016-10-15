@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# remove Visual Studio project info from .hg
+
+hg rem $1.vcxproj
+hg rem $1.vcxproj.filters
