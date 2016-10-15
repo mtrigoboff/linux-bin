@@ -1,0 +1,5 @@
+#! /bin/bash
+
+find $1 -type f -name '*.h'		-exec dos2unix -k -s -o {} ';'
+find $1 -type f -name '*.cpp'	-exec dos2unix -k -s -o {} ';'
+find $1 -type f -name makefile	-exec dos2unix -k -s -o {} ';'
