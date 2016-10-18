@@ -1,4 +1,10 @@
 #! /bin/bash
 
-rm -f linux_setup.tar.gz
-tar cvzpf linux_setup.tar.gz .bash_profile .hgrc .gdbinit .vimrc
+# archive linux setup files in home directory,
+# creating compressed tar file named by $fname
+
+fname=linux_setup.tar.gz
+
+rm -f $fname.tar.gz
+tar --create --preserve-permissions --gzip --file $fname \
+	.bash_profile .hgrc .gdbinit .vimrc
