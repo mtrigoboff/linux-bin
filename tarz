@@ -8,7 +8,8 @@
 # directory name which can occur if tab was hit for autocompletion.
 
 if [ $# -eq 0 ];then
-	echo 'call with directory name -> <dirname>.tar.gz'
+	echo 'call with name of directory to compress'
+	echo '(e.g. tarz dir)'
 	exit
 fi
 
