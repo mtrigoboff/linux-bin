@@ -3,13 +3,20 @@
 # archive all files recursively in directory $1,
 # creating compressed tar file named $1.tar.gz
 
+# Thanks to Fall 2016 student Mahmoud Al Robiai for pointing out
+# a clever way to prevent errors caused by a terminal '/' on the
+# directory name which can occur if tab was hit for autocompletion.
+
 if [ $# -eq 0 ];then
 	echo 'call with directory name -> <dirname>.tar.gz'
 	exit
 fi
 
-rm -f $1.tar.gz			# remove previous file, if any
+dirName=$(echo $1 | tr --delete '/')
+fileName=${dirName}.tar.gz
 
-tar --create --preserve-permissions --gzip --file $1.tar.gz $1
+rm -f $fileName		# remove previous file, if any
+
+tar --create --preserve-permissions --gzip --file $fileName $dirName
 
 chmod 600 $1.tar.gz
