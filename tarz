@@ -20,4 +20,4 @@ rm -f $fileName		# remove previous file, if any
 
 tar --create --preserve-permissions --gzip --file $fileName $dirName
 
-chmod 600 $1.tar.gz
+chmod 600 $fileName
