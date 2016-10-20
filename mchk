@@ -5,4 +5,7 @@ if [ $# -eq 0 ];then
 	exit
 fi
 
-do_cmd "valgrind --tool=memcheck --leak-check=full $1"
+# Thanks to Fall 2016 student Zach Grow for suggesting use
+# of the --track-origins=yes flag in this bash script.
+
+do_cmd "valgrind --track-origins=yes --tool=memcheck --leak-check=full $1"
