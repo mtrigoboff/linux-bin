@@ -5,4 +5,4 @@ if [ $# -eq 0 ];then
 	exit
 fi
 
-do_cmd "valgrind --tool=memcheck --leak-check=full --show-reachable=yes $1"
+do_cmd "valgrind -v --tool=memcheck --leak-check=full --show-reachable=yes $1"
