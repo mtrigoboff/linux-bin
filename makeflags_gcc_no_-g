@@ -1,0 +1,9 @@
+# definitions work for make by defining variables
+# that are used by make's built-in rules
+#
+# bash scripts require a different syntax:
+# see, for instance, gccflags
+
+CC = gcc
+CFLAGS = -m32 -std=gnu11 -Wall
+LDFLAGS = -m32
