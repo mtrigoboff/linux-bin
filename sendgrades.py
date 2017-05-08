@@ -17,7 +17,7 @@
 #	5: name of file to attach to msg
 #	   (currently not implemented, worked in Linux-based version on syccux...)
 
-import subprocess, sys, time
+import subprocess, sys, textwrap, time
 
 asgmtTitle =			'Assignment'
 courseGrade = 			'course'
@@ -95,7 +95,10 @@ def sendgrades(course, item, term):
 				msgFile.write('%s, %s %s\n\n'				% (course.upper(), asgmtTitle, asgmtNumber))
 			msgFile.write('Grade: %s\n\n'					% (grade))
 			if len(comment) > 0:
-				msgFile.write('Comment:\n%s\n\n'			% (comment))
+				msgFile.write('Comment:\n')
+				lines = textwrap.wrap(comment, 80)
+				for line in lines:
+					msgFile.write('%s\n'					% (line))
 			msgFile.write(footer)
 			msgFile.close()
 			msgFile = open('msg.txt', 'r')
