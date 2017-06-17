@@ -30,7 +30,7 @@ asgmtPrompt =			'assignment:       '
 termPrompt =			'term:             '
 
 divider = '-----------------------------------------------------------------'
-footer = divider + '''
+footer = '\n' + divider + '''
 This message was generated automatically by a Python script.
 Do not reply to it via standard email. If you need to discuss
 your grade for this assignment, send email via Desire2Learn.
