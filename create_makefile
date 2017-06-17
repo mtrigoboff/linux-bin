@@ -12,7 +12,7 @@ class Target:
 
 tabWidth =	4
 header = 'include ~michael.trigoboff/bin/makeflags_g++\n'
-footer = ('.PHONY: x', 'x:', '# clean the directory', 'rm -f *.o ')
+footer = ('.PHONY: x', 'x:', '# clean the directory', '$(info -- cleaning the directory --)', 'rm -f *.o ')
 	# trailing space in footer[3] is necessary
 
 def createMakefile(projectDirPath, appTargetNameStart):
@@ -92,7 +92,9 @@ def createMakefile(projectDirPath, appTargetNameStart):
 	print('\t' * nTabsMax,								file=makefile, end='', sep='')
 	print(footer[2],									file=makefile,		   sep='')
 	print('\t' * nTabsMax,								file=makefile, end='', sep='')
-	print(footer[3],									file=makefile, end='', sep='')
+	print(footer[3],									file=makefile,		   sep='')
+	print('\t' * nTabsMax,								file=makefile, end='', sep='')
+	print(footer[4],									file=makefile, end='', sep='')
 	print(targets[0].name,								file=makefile)
 
 	makefile.close()
