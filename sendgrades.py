@@ -107,6 +107,7 @@ def sendgrades(course, item, term):
 			msgFile.close()
 			print(studentAddr)
 			nMsgsSent += 1
+			sleep(0.1)		# avoid hammering mail service too quickly
 			
 			# warn if a file attachment was specified
 			if len(attachedFileName) > 0:
