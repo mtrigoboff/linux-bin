@@ -57,22 +57,22 @@ def sendgrades(course, item, term):
 		asgmtNumber = item[-1:]
 	nTokenErrors = 0
 	nMsgsSent = 0
-	# gradesFilePath = '~/%s.classes/%s/%s%s%sgrades.txt' \
 	gradesFilePath = '/home/inst/' + instructorAddr + '/%s.classes/%s/%s%s%sgrades.txt' \
 					  % (course, term, course, term, item)
+	#gradesFilePath = '%s%s%sgrades.txt' % (course, term, item)		# for debugging in VS
 	gradesFile = open(gradesFilePath, 'r')
 
 	for line in gradesFile.readlines()[1:]:					# skip first line containing column headers
 
 		tokens = line.split('\t')							# extract tokens from line
-		if len(tokens) != 6:
+		if len(tokens) < 6:
 			print('token # error (%d):\n    %s' % (len(tokens), line), end='', file=sys.stderr)
 				# line ends in newline, trailing comma tells print not to print the newline
 			nTokenErrors += 1
 			continue
 
 		# extract tokens from token list
-		[lastName, firstName, studentAddr, grade, comment, attachedFileName] = tokens
+		[lastName, firstName, studentAddr, grade, comment, attachedFileName] = tokens[0:6]
 		comment = comment.strip(' "')						# Excel embeds comments containing ',' in "..."
 		attachedFileName = attachedFileName.strip(' \n')	# last grade in line will include the '\n'
 
