@@ -1,4 +1,5 @@
 # definition works for bash scripts
 # (can't have spaces around = sign)
 
-CFLAGS='-m32 -std=gnu11 -Wall -g'
+CFLAGS='-m32 -Wall -g'
+# CFLAGS='-m32 -std=gnu11 -Wall -g'
