@@ -92,7 +92,7 @@ def sendgrades(course, item, term):
 			elif item == finalExamGrade:
 				msgFile.write('%s Final Exam Grade\n\n'		% (course))
 			else:
-				msgFile.write('%s, %s %s\n\n'				% (course.upper(), asgmtTitle, asgmtNumber))
+				msgFile.write('%s %s %s\n\n'				% (course.upper(), asgmtTitle, asgmtNumber))
 			msgFile.write('Grade: %s\n\n'					% (grade))
 			if len(comment) > 0:
 				msgFile.write('Comment:\n')
