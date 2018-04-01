@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-# Desire2Learn provides student work in the form of a directory
+# Desire2Learn provides student work in the form of a zip file
 # containing files of the form: studentName-dateTime-fileName.
 #
-# This code takes a Desire2Learn directory and creates a subdirectory
+# This code takes a Desire2Learn zip file and creates a subdirectory
 # for each student, moves that student's file into the student directory,
 # and renames the file to its original name. In other words, this code
 # takes each file and creates folder studentName containing file fileName.
