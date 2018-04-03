@@ -1,5 +1,5 @@
 #! /bin/bash
 
-# invoke vim to use a vim session file
+# invoke vim using a vim session file
 
 vim -S $1
