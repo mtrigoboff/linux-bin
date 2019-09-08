@@ -1,0 +1,8 @@
+# definition works for bash scripts
+# (can't have spaces around = sign)
+
+C64_FLAGS='-Wall -g'
+
+# CFLAGS='-m32 -std=gnu11 -Wall -g'
+#
+# gnu11 is the default, so it is not necessary to specify this explicitly.

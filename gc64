@@ -1,0 +1,6 @@
+#! /bin/bash
+
+source gcc64flags
+
+do_cmd "gcc $C64_FLAGS $1.c -o $1"
+chmod 755 $1
