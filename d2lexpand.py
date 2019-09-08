@@ -95,7 +95,7 @@ def d2lExpandFile():
 				nProjects += 1
 			else:
 				shutil.move(d2lFilePath, os.path.join(studentDirPath, d2lFileName))
-				print('   additional file', d2lFileName, file=sys.stderr)
+				print('   additional file', d2lFileName)
 	
 	printDivider()
 	print('%s projects' % (nProjects))
