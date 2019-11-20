@@ -19,7 +19,8 @@
 
 import subprocess, sys, textwrap, time
 
-asgmtTitle =			'Assignment'
+# asgmtTitle =			'Assignment'
+asgmtTitle =			'Lab'
 courseGrade = 			'course'
 finalExamGrade = 		'final'
 instructorAddr = 		'michael.trigoboff'
