@@ -46,7 +46,7 @@ def duration(start, end):
 		minuteStr = 's'
 	return '%d minute%s, %.1f seconds' % (minutes, minuteStr, runTime % 60)
 
-# send grades to students' pcc.edu email accounts
+# send grades to students' linux email accounts
 def sendgrades(course, item, term):
 	
 	startTime = time.time()
@@ -60,7 +60,6 @@ def sendgrades(course, item, term):
 	nMsgsSent = 0
 	gradesFilePath = '/home/inst/' + instructorAddr + '/%s.classes/%s/%s%s%sgrades.txt' \
 					  % (course, term, course, term, item)
-	#gradesFilePath = '%s%s%sgrades.txt' % (course, term, item)		# for debugging in VS
 	gradesFile = open(gradesFilePath, 'r')
 
 	for line in gradesFile.readlines()[1:]:					# skip first line containing column headers
