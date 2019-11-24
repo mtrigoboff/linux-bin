@@ -1,4 +1,0 @@
-syntax: glob
-
-flag_usage
-__pycache__/*
