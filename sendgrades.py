@@ -17,18 +17,20 @@
 #	5: name of file to attach to msg
 #	   (currently not implemented, worked in Linux-based version on syccux...)
 
-import subprocess, sys, textwrap, time
+import os, os.path, subprocess, sys, textwrap, time
 
-# asgmtTitle =			'Assignment'
-asgmtTitle =			'Lab'
-courseGrade = 			'course'
-finalExamGrade = 		'final'
+courseGrade = 		'course'
+finalExamGrade =	'final'
+
+courseAttrs =	{'cs140u'	:	('lab',		'Lab'		),
+			 	 'cs160'	:	('asgmt',	'Assignment'),
+				 'cs201'	:	('asgmt',	'Assignment'),
+			 	 'cs260'	:	('asgmt',	'Assignment')}
+
 instructorAddr = 		'michael.trigoboff'
 serverAddr =			'syccuxas01.pcc.edu'
 
-coursePrompt =			'course name:      '
-asgmtPrompt =			'assignment:       '
-termPrompt =			'term:             '
+msgFilePath = os.path.expanduser(os.path.join('~', 'temp', 'msg.txt'))
 
 divider = '-----------------------------------------------------------------'
 footer = '\n' + divider + '''
@@ -51,15 +53,33 @@ def sendgrades(course, item, term):
 	
 	startTime = time.time()
 
-	# get info for the grades to send
+	try:
+		[fileNameStr, titleStr] = courseAttrs[course]
+	except KeyError:
+		print('unknown course')
+		sys.exit(-1)
+
+	if item == courseGrade:
+		fileNameStr = 'course'
+		titleStr = 'Course'
+		addNumber = False
+	elif item == finalExamGrade:
+		fileNameStr = 'final'
+		titleStr = 'Final'
+		addNumber = False
+	else:
+		addNumber = True
+		
+	if addNumber:
+		fileNameStr += str(item)
+		titleStr += ' ' + str(item)
+
 	print(divider)
 	
-	if item != courseGrade and item != finalExamGrade:
-		asgmtNumber = item[-1:]
 	nTokenErrors = 0
 	nMsgsSent = 0
 	gradesFilePath = '/home/inst/' + instructorAddr + '/%s.classes/%s/%s%s%sgrades.txt' \
-					  % (course, term, course, term, item)
+					  % (course, term, course, term, fileNameStr)
 	gradesFile = open(gradesFilePath, 'r')
 
 	for line in gradesFile.readlines()[1:]:					# skip first line containing column headers
@@ -84,15 +104,15 @@ def sendgrades(course, item, term):
 			elif item == finalExamGrade:
 				msgSubject =	'%s: Final Exam Grade\n'	% (course)
 			else:
-				msgSubject =	'%s: %s %s Grade\n'			% (course, asgmtTitle, asgmtNumber)
+				msgSubject =	'%s: %s Grade\n'			% (course, titleStr)
 																								
-			msgFile = open('msg.txt', 'w')
+			msgFile = open(msgFilePath, 'w+')
 			if item == courseGrade:
 				msgFile.write('%s Course Grade\n\n'			% (course))
 			elif item == finalExamGrade:
 				msgFile.write('%s Final Exam Grade\n\n'		% (course))
 			else:
-				msgFile.write('%s %s %s\n\n'				% (course.upper(), asgmtTitle, asgmtNumber))
+				msgFile.write('%s %s\n\n'					% (course.upper(), titleStr))
 			msgFile.write('Grade: %s\n\n'					% (grade))
 			if len(comment) > 0:
 				msgFile.write('Comment:\n')
@@ -101,7 +121,7 @@ def sendgrades(course, item, term):
 					msgFile.write('%s\n'					% (line))
 			msgFile.write(footer)
 			msgFile.close()
-			msgFile = open('msg.txt', 'r')
+			msgFile = open(msgFilePath, 'r')
 			subprocess.call(['mail', '-s', msgSubject, '-b', instructorAddr, studentAddr], \
 							stdin=msgFile)
 			msgFile.close()
@@ -113,6 +133,12 @@ def sendgrades(course, item, term):
 			if len(attachedFileName) > 0:
 				print('file attachment: %s' % (attachedFileName), file=sys.stderr)
 			
+	try:
+		os.remove(msgFilePath)
+	except FileNotFoundError:
+		# file will not be there if no msgs were sent
+		pass
+
 	print(divider)
 
 	# report number of lines with token # errors
@@ -131,18 +157,23 @@ def sendgrades(course, item, term):
 	print()
 			
 # if invoked from the command line
+
+coursePrompt =			'course name:      '
+asgmtPrompt =			'assignment/lab #: '
+termPrompt =			'term:             '
+
 if __name__ == '__main__':
 	print('Send Grades')
 	print(divider)
 	if len(sys.argv) < 2:
-		course =	input(coursePrompt)
-		item =		input(asgmtPrompt)				# type 'final' for final exam grades
-													# type 'course' for course grades
-		term =		input(termPrompt)
+		course =		input(coursePrompt)
+		item =			input(asgmtPrompt)		# type 'final' for final exam grades
+												# type 'course' for course grades
+		term =			input(termPrompt)
 	else:
-		course =	sys.argv[1]
-		item =		sys.argv[2]
-		term =		sys.argv[3]
+		course =		sys.argv[1]
+		item =			sys.argv[2]
+		term =			sys.argv[3]
 		print('%s%s' % (coursePrompt, course))
 		print('%s%s' % (asgmtPrompt, item))
 		print('%s%s' % (termPrompt, term))
