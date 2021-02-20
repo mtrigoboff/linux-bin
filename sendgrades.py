@@ -159,7 +159,7 @@ def sendgrades(course, item, term):
 # if invoked from the command line
 
 coursePrompt =			'course name:      '
-asgmtPrompt =			'assignment/lab #: '
+asgmtPrompts =			{'cs201' : 'asgmt# as 0#:     '}
 termPrompt =			'term:             '
 
 if __name__ == '__main__':
@@ -167,6 +167,9 @@ if __name__ == '__main__':
 	print(divider)
 	if len(sys.argv) < 2:
 		course =		input(coursePrompt)
+
+		asgmtPrompt =	asgmtPrompts.get(course, 'assignment/lab #: ')
+
 		item =			input(asgmtPrompt)		# type 'final' for final exam grades
 												# type 'course' for course grades
 		term =			input(termPrompt)
