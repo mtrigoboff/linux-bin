@@ -15,7 +15,7 @@
 #
 # by Michael Trigoboff, http://spot.pcc.edu/~mtrigobo
 
-import os, shutil, sys, zipfile
+import datetime, os, shutil, sys, zipfile
 
 homeDirPath =			'/home/inst/michael.trigoboff'
 dividerWidth =			20
@@ -59,10 +59,12 @@ def d2lExpandFile():
 	asgmt =		input('asgmt name:  ')
 	term =		input('term:        ')
 
+	monthDay = datetime.datetime.now().strftime('%m-%d')
+
 	printDivider()
 	termDirPath = os.path.join(homeDirPath, course + '.classes', term)
-	asgmtDirPath = os.path.join(termDirPath, asgmt)
-	zipFileName = asgmt + '.zip'
+	asgmtDirPath = os.path.join(termDirPath, asgmt + '_' + monthDay)
+	zipFileName = asgmt + '_' + monthDay + '.zip'
 	zipFilePath = os.path.join(termDirPath, zipFileName)
 	if not os.path.isfile(zipFilePath):
 		print('%s: file not found' % zipFilePath)

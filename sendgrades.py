@@ -17,7 +17,7 @@
 #	5: name of file to attach to msg
 #	   (currently not implemented, worked in Linux-based version on syccux...)
 
-import os, os.path, subprocess, sys, textwrap, time
+import datetime, os, os.path, subprocess, sys, textwrap, time
 
 courseGrade = 		'course'
 finalExamGrade =	'final'
@@ -78,8 +78,9 @@ def sendgrades(course, item, term):
 	
 	nTokenErrors = 0
 	nMsgsSent = 0
-	gradesFilePath = '/home/inst/' + instructorAddr + '/%s.classes/%s/%s%s%sgrades.txt' \
-					  % (course, term, course, term, fileNameStr)
+	monthDay = datetime.datetime.now().strftime('%m-%d')
+	gradesFilePath = '/home/inst/' + instructorAddr + '/%s.classes/%s/%s%s%sgrades_%s.txt' \
+					  % (course, term, course, term, fileNameStr, monthDay)
 	gradesFile = open(gradesFilePath, 'r')
 
 	for line in gradesFile.readlines()[1:]:					# skip first line containing column headers
