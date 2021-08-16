@@ -1,0 +1,6 @@
+#! /bin/bash
+
+hexdump -C $1 > $1.diff
+hexdump -C $2 > $2.diff
+diff $1.diff $2.diff | less
+rm $1.diff $2.diff
