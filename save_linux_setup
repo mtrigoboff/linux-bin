@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# archive linux setup files in home directory,
+# copying files into git repository directory and
+# creating compressed tar file named by $dir_name
+
+dir_name=linux_setup
+files='.bash_profile .gdbinit .git-credentials .gitconfig .pinerc .vimrc git_token github_token.txt'
+
+cd
+cp $files linux_setup
+tarz $dir_name
