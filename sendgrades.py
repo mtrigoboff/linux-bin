@@ -168,17 +168,15 @@ if __name__ == '__main__':
 	print(divider)
 	if len(sys.argv) < 2:
 		course =		input(coursePrompt)
-
 		asgmtPrompt =	asgmtPrompts.get(course, 'assignment/lab #: ')
-
 		item =			input(asgmtPrompt)		# type 'final' for final exam grades
 												# type 'course' for course grades
 		term =			input(termPrompt)
+		print('%s%s' % (coursePrompt, course))
+		print('%s%s' % (asgmtPrompt, item))
+		print('%s%s' % (termPrompt, term))
 	else:
 		course =		sys.argv[1]
 		item =			sys.argv[2]
 		term =			sys.argv[3]
-		print('%s%s' % (coursePrompt, course))
-		print('%s%s' % (asgmtPrompt, item))
-		print('%s%s' % (termPrompt, term))
 	sendgrades(course, item, term)

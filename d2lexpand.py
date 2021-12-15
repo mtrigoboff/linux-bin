@@ -49,19 +49,9 @@ def expandZipFile(zipFileDirPath, zipFilePath):
 	zf.extractall(zipFileDirPath)
 	zf.close()
 
-def d2lExpandFile():
+def d2lExpandFile(course, asgmt, term):
 	
-	print('Expand D2L File')
-	printDivider()
-	
-	# get info for file to expand
-	course =	input('course name: ')
-	asgmt =		input('asgmt name:  ')
-	term =		input('term:        ')
-
 	monthDay = datetime.datetime.now().strftime('%m-%d')
-
-	printDivider()
 	termDirPath = os.path.join(homeDirPath, course + '.classes', term)
 	asgmtDirPath = os.path.join(termDirPath, asgmt + '_' + monthDay)
 	zipFileName = asgmt + '_' + monthDay + '.zip'
@@ -105,4 +95,17 @@ def d2lExpandFile():
 
 # when invoked from the command line
 if __name__ == '__main__':
-	d2lExpandFile()
+	print('Expand D2L File')
+	printDivider()
+
+	# get info for file to expand
+	if len(sys.argv) < 2:
+		course =	input('course name: ')
+		asgmt =		input('asgmt name:  ')
+		term =		input('term:        ')
+	else:
+		course =	sys.argv[1]
+		asgmt =		sys.argv[2]
+		term =		sys.argv[3]
+
+	d2lExpandFile(course, asgmt, term)
