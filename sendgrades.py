@@ -71,8 +71,9 @@ def sendgrades(course, item, term):
 		addNumber = True
 		
 	if addNumber:
-		fileNameStr += str(item)
-		titleStr += ' ' + str(item)
+		itemNumStr = str(item)
+		fileNameStr += '0' + itemNumStr
+		titleStr += ' ' + itemNumStr
 
 	print(divider)
 	
