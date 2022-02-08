@@ -161,7 +161,7 @@ def sendgrades(course, item, term):
 # if invoked from the command line
 
 coursePrompt =			'course name:      '
-asgmtPrompts =			{'cs201' : 'asgmt# as 0#:     '}
+asgmtPrompts =			{'cs201' : 'asgmt#, 1 digit:  '}
 termPrompt =			'term:             '
 
 if __name__ == '__main__':
