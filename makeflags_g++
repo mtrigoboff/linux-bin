@@ -5,6 +5,4 @@
 # see, for instance, g++flags
 
 CC = g++
-CPPFLAGS = -m32 -Wall -Wno-write-strings -Wno-misleading-indentation -g
-#CPPFLAGS = -m32 -std=c++14 -Wall -Wno-write-strings -g
-LDFLAGS = -m32
+CPPFLAGS = -Wall -Wno-write-strings -Wno-misleading-indentation -g

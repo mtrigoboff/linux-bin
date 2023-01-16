@@ -5,6 +5,4 @@
 # see, for instance, gccflags
 
 CC = gcc
-CFLAGS = -m32 -Wall -g
-# CFLAGS = -m32 -std=gnu11 -Wall -g
-LDFLAGS = -m32
+CFLAGS = -Wall -g
