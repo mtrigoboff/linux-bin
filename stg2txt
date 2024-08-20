@@ -1,0 +1,10 @@
+#! /bin/bash
+
+for txt_file in ./*.txt; do
+	chmod 644 "$txt_file"
+done
+
+for stg_file in ./*.stg; do
+	chmod 644 "$stg_file"
+	hexdump -C "$stg_file" > "$stg_file".txt
+done
