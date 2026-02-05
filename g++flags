@@ -1,4 +1,4 @@
 # definition works for bash scripts
 # (can't have spaces around = sign)
 
-CPPFLAGS='-Wall -Wno-write-strings -g'
+CPPFLAGS='--std=c++20 -Wall -Wno-write-strings -g'
